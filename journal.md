@@ -1,0 +1,1 @@
+Do a couple of logs here to log our work, and if we get accepted hopefully we'll continue work on this journal log. This is essentially our engineering notebook ig.
