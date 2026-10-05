@@ -1,7 +1,7 @@
 # NASA TechRise High-Altitude Stratospheric Payload
 **Mission Profile:** Stratospheric Radiation levels and Earth's magnetic interference modeling
 
----
+## Make sure to log all hours on journal.md
 
 ## Mission Overview
 This repository contains the complete technical documentation, bill of materials, circuit architecture, and firmware structure for our NASA TechRise student challenge payload. Designed to meet strict near-space constraints (**<$300 budget** and **<0.5kg mass limit**), the payload measures ionizing radiation and high-altitude atmospheric profiles while maintaining a strictly controlled internal thermal microclimate.
