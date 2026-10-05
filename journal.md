@@ -1,6 +1,6 @@
-Do a couple of logs here to log our work, and if we get accepted hopefully we'll continue work on this journal log. This is essentially our engineering notebook ig.
+Do a couple of logs here to log our work, and if we get accepted hopefully we'll continue work on this journal log. This is essentially our engineering notebook ig. Follow the format I used.
 
-# 10/05/2026 18:19 PM - Setting up a basic voltage regulator system for the circuit and added the ESP32 ic.
+# Ahmad Farzad Taquee - 10/05/2026 18:19 PM - Setting up a basic voltage regulator system for the circuit and added the ESP32 ic.
 
 _Time spent: 27m_
 
