@@ -12,78 +12,59 @@
 
 // HERE I WILL ADD THE OTHER RTOS functions that Taquee wanted, like sleep, or poweroff (later though)
 
-
-
-
-
-
-// make sure everything is working
-if (!SD.begin()) {
-  Serial.println("You have a problem with your SD card");
-  return;
-}
-
-// check to make sure file doens't already exist
-if (!SD.exists("/data.csv")) {
-  File file = SD.open("/data.csv", FILE_WRITE);
-
-  // quickly add headers to columns
-  file.println("Time,Temp,Pressure");
-
-  file.close();
-}
-
 // recording rate for data into csv
 const int RecordRate = 1000;
 
-// write data we have to the file
-void sensorToCsv(void *pvParameters) {
-  while(true) {
-    if(file) {
-      file.printf(
-        "%lu,%d,%d\n",
-        millis(),
-        SensorData.rawTemp,
-        SensorData.rawPressure
-      );
-  
-      file.close();
-    } 
-    
-    vTaskDelay(pdMS_TO_TICKS(RecordRate));
-  }
-}
+File file;
 
-// this sensor class lets us instantiate many different
-// sensors directly from setup (:
 
 // also a struct for sensor output
-struct SensorDataS = {
+struct SensorDataS {
   // here we could have someone who knows
   // which sensors to add include stuff
   // For right now I'm assuming just a temp, and pressure
   float rawTemp;
   float rawPressure;
-}
+};
 
 // init
 // Creating the sensor data struct
 SensorDataS SensorData;
+
+
+// write data we have to the file
+void sensorToCsv(void *pvParameters) {
+  while(true) {
+    file = SD.open("/data.csv", FILE_WRITE);
+    file.printf(
+      "%lu,%d,%d\n",
+      millis(),
+      SensorData.rawTemp,
+      SensorData.rawPressure
+    );
+  
+    file.close();
+    vTaskDelay(pdMS_TO_TICKS(RecordRate));
+  } 
+}
+
+// this sensor class lets us instantiate many different
+// sensors directly from setup (:
+
 // the mutex prevents collisions
 SemaphoreHandle_t sensorMutex;
-sensorMutex = xSemaphoreCreateMutex();
 
 // class sensor
 class Sensor {
 public:
   int PIN;
   float* output;
-  char name[];
+  String name;
   boolean debugLogging;
-  char unit[];
+  String unit;
   int msRate;
 
-  Sensor(int p, float* out, char[] n, boolean d, char[] u, int r) {
+  Sensor(int p, float* out, String n, bool d, String u, int r) {
     PIN = p;
     output = out;
     name = n;
@@ -95,7 +76,7 @@ public:
     xTaskCreatePinnedToCore(
       // the task starter function ...
       pipe,
-      "Task: " + name,
+      "SensorTask",
       4096,
       // this is to take all of the objects vars and transfer them into the other function
       // its gross but you won't have to look at it lol
@@ -110,7 +91,7 @@ public:
   // literaly just run task with the Sensor attributes as a parameter
   static void pipe(void* parameter) {
     Sensor* self = static_cast<Sensor*>(parameter);
-    self->task();
+    self->SensorTask(nullptr);
   }
   // FreeRTOS sensor task
   void SensorTask(void *pvParameters) {
@@ -122,7 +103,12 @@ public:
       *output = temp;
       xSemaphoreGive(sensorMutex);
       if (debugLogging) {
-        Serial.println("The sensor, " + name + ", was read as " + temp + " (" + unit + ")");
+        Serial.print("The sensor ");
+        Serial.print(name);
+        Serial.print(" was read as ");
+        Serial.print(temp);
+        Serial.print(" ");
+        Serial.println(unit);
       }
       
       // here I would store the data somewhere on the chip
@@ -150,6 +136,30 @@ void testSerial() {
 
 // here is the setup func
 void setup() {
+
+
+  // make sure everything is working
+  if (!SD.begin()) {
+    Serial.println("You have a problem with your SD card");
+  }
+
+  // check to make sure file doens't already exist
+  if (!SD.exists("/data.csv")) {
+    file = SD.open("/data.csv", FILE_WRITE);
+
+    // quickly add headers to columns
+    file.println("Time,Temp,Pressure");
+
+    file.close();
+  }
+
+
+  // init mutex
+  sensorMutex = xSemaphoreCreateMutex();
+
+
+
+
   // I had forgotten the boud rate stuff; maybe it needs to be lower?
   Serial.begin(115200);
   // Init sensors 
@@ -204,14 +214,6 @@ void loop() {
   // testSerial();
   
 }
-
-
-
-
-
-
-
-
 
 
 
