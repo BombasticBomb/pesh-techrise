@@ -8,3 +8,10 @@ Firstly, I added an ESP32 chip which'll be out main microcontroller for the proj
 <img width="1574" height="901" alt="image" src="https://github.com/user-attachments/assets/1d034ae1-3fb6-48fe-b4f3-bd0a31124333" />
 <img width="1480" height="788" alt="image" src="https://github.com/user-attachments/assets/cb968f23-1d56-4e7f-bf02-595500fd8053" />
 
+
+# Kip Pilcher - 10/15/2026 10:57 AM - General starting code for ESP32 chip; RTOS task implementation for data logging.
+
+_Time spent: 61m_
+
+Firstly, I implemented a sensor class to wrap the task code for each sensor, simplifying the code of future sensors. Then, I added an additional task for data logging. I also created a simple function to clear that csv, if necessary, as a utility. All PIN #s are arbitrary as of right now and do not reflect the PCB design.
+
