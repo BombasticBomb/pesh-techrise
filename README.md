@@ -20,25 +20,25 @@ The chassis is designed in Autodesk Fusion 360 and 3D printed using **carbon-fib
 
 ---
 
-## Bill of Materials (BOM)
+## 4. Bill Of Materials (BOM) & Budget
 
-| Component Category | Part / Item Description | Estimated Cost (\$) | Mass (g) |
-| :--- | :--- | :--- | :--- |
-| **Processing & Core** | ESP32-S3 Development Board | \$6.00 | 15g |
-| **Radiation Suite** | SBM-20 Geiger-Müller Tube | \$25.00 | 20g |
-| **Radiation Suite** | High-Voltage Step-up Module (~400V) | \$10.00 | 10g |
-| **Environment** | MS5611 Barometer Breakout | \$12.00 | 5g |
-| **Environment** | LIS3MDL Magnetometer Breakout | \$8.00 | 3g |
-| **Environment** | u-blox MAX-M10S GPS Module | \$16.00 | 16g |
-| **Data Logging** | MicroSD Card Reader Module (SPI) | \$3.00 | 5g |
-| **Thermal Suite** | Dual DS18B20 Digital Temp Sensors (Internal/External) | \$15.00 | 15g |
-| **Thermal Suite** | Aluminum Spreader Plates & 10W Resistors | \$12.00 | 45g |
-| **Power Control** | N-Channel MOSFETs (Logic-Level Switching for Heaters) | \$2.00 | 2g |
-| **Mechanical Chassis** | Custom 4x4x8 in. PA-CF 3D Print Filament | \$15.00 | 110g |
-| **Insulation & Plumbing** | XPS Foam Panels & Silicone Static Port Tubing | \$8.00 | 25g |
-| **Total Payload Profile** | *Complete Integrated Stratospheric Assembly* | **~\$172.00** | **~271g** |
+| Name | Estimated Cost (\$) | Mass (g) |
+| :--- | :--- | :--- |
+| ESP32-S3 Development Board | \$6.00 | 15g |
+| SBM-20 Geiger-Müller Tube | \$25.00 | 20g |
+| High-Voltage Step-up Module (~400V) | \$10.00 | 10g |
+| MS5611 Barometer Breakout | \$12.00 | 5g |
+| LIS3MDL Magnetometer Breakout | \$8.00 | 3g |
+| u-blox MAX-M10S GPS Module | \$16.00 | 16g |
+| MicroSD Card Reader Module (SPI) | \$3.00 | 5g |
+| Dual DS18B20 Digital Temp Sensors (Internal/External) | \$15.00 | 15g |
+| Aluminum Spreader Plates & 10W Resistors | \$12.00 | 45g |
+| N-Channel MOSFETs (Logic-Level Switching for Heaters) | \$2.00 | 2g |
+| Custom 4x4x8 in. PA-CF 3D Print Filament | \$15.00 | 110g |
+| XPS Foam Panels & Silicone Static Port Tubing | \$8.00 | 25g |
+| **Total Payload Profile** | **~\$172.00** | **~271g** |
 
----
+> *Note: The estimated costs above do not account for shipping fees or iterative prototyping hardware; however, given NASA's $1,500 budget limit, we are confident that total expenses will remain well below the threshold.*
 
 ## Avionics & Circuit Integration (KiCad PCB)
 To eliminate loose wiring failures under high-vibration flight conditions, all avionics interface through a custom single-layer **KiCad PCB**.
