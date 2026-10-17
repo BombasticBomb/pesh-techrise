@@ -32,7 +32,7 @@ The chassis is designed in Autodesk Fusion 360 and 3D printed using **carbon-fib
 | **Environment** | u-blox MAX-M10S GPS Module | \$16.00 | 16g |
 | **Data Logging** | MicroSD Card Reader Module (SPI) | \$3.00 | 5g |
 | **Thermal Suite** | Dual DS18B20 Digital Temp Sensors (Internal/External) | \$15.00 | 15g |
-| **Thermal Suite** | Aluminum Spreader Plates & 10-15W Resistors | \$12.00 | 45g |
+| **Thermal Suite** | Aluminum Spreader Plates & 10W Resistors | \$12.00 | 45g |
 | **Power Control** | N-Channel MOSFETs (Logic-Level Switching for Heaters) | \$2.00 | 2g |
 | **Mechanical Chassis** | Custom 4x4x8 in. PA-CF 3D Print Filament | \$15.00 | 110g |
 | **Insulation & Plumbing** | XPS Foam Panels & Silicone Static Port Tubing | \$8.00 | 25g |
